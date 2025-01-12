@@ -22,13 +22,36 @@
       margin-bottom: 10px;
     }
 
-    /* Instruction text */
+    /* Frenzied Instruction text styling */
     .instruction-text {
-      color: green; /* Changed to green */
+      color: green; /* Initial green text color */
       font-size: 1.5em;
       margin-top: 20px;
       font-weight: normal;
       font-family: 'Arial', sans-serif;
+      position: absolute;
+      top: 150px; /* Start with an initial position */
+      left: 50%;
+      transform: translateX(-50%); /* Center the text horizontally */
+      animation: shake 0.5s infinite, changeColor 2s infinite; /* Apply shaking and color change animations */
+    }
+
+    /* Shaking animation */
+    @keyframes shake {
+      0% { transform: translateX(-50%) translateY(0); }
+      25% { transform: translateX(-50%) translateY(-10px); }
+      50% { transform: translateX(-50%) translateY(10px); }
+      75% { transform: translateX(-50%) translateY(-10px); }
+      100% { transform: translateX(-50%) translateY(0); }
+    }
+
+    /* Color changing animation */
+    @keyframes changeColor {
+      0% { color: green; }
+      25% { color: yellow; }
+      50% { color: orange; }
+      75% { color: red; }
+      100% { color: green; }
     }
 
     h2.s7 {
@@ -95,7 +118,7 @@
 
   <h1 class="s1">Welcome to COOLIODUCKYS.COM</h1>
 
-  <!-- Instruction Text -->
+  <!-- Frenzied Instruction Text -->
   <p class="instruction-text">Click on the image below to summon a duck that will bounce around the screen!</p>
 
   <div class="chef-section">
