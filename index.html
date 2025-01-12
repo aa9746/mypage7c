@@ -11,7 +11,7 @@
       text-align: center;
       padding: 20px;
       position: relative;
-      overflow: hidden;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
     }
 
     /* Header styling for "Welcome to COOLIODUCKYS.COM" */
@@ -96,11 +96,37 @@
       font-size: 1.1em;
     }
 
-    /* Styling for additional header */
-    h5.s6 {
-      color: orangered;
-      font-size: 1.5em;
-      margin-top: 40px;
+    /* Gaming Duck Section */
+    .gaming-duck-section {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 50px;
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Gaming Duck Image Styling */
+    .gaming-duck-img {
+      width: 250px;
+      border-radius: 15px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .gaming-duck-img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Fun Facts about Gaming Duck */
+    .gaming-fun-facts {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 10px;
+      font-size: 1.1em;
     }
 
     /* Duck Styling */
@@ -139,6 +165,24 @@
   </div>
 
   <h2 class="s7">Chef Duck's motto: "Cook with love, dance with flair!"</h2>
+
+  <!-- New Section for Gaming Duck -->
+  <div class="gaming-duck-section">
+    <h2>FACTS ALL ABOUT GAMING DUCK</h2>
+
+    <!-- Gaming Duck Image -->
+    <img class="gaming-duck-img" src="https://www.example.com/gaming-duck.jpg" alt="Gaming Duck" />
+
+    <div class="gaming-fun-facts">
+      <h5 class="s6">Fun Facts About Gaming Duck:</h5>
+      <ul>
+        <li>Gaming Duck is the undisputed champion of "Duck Royale," a popular online battle royale game!</li>
+        <li>He can beat 100 players in a single round using only his webbed feet to control the mouse and keyboard.</li>
+        <li>In his downtime, Gaming Duck loves to stream his gaming sessions, earning millions of followers!</li>
+        <li>Gaming Duck once completed an entire game of "Quack of Duty" with his eyes closed, claiming it was for "extra challenge!"</li>
+      </ul>
+    </div>
+  </div>
 
   <script>
     // Function to spawn a duck when the image is clicked
