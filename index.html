@@ -70,7 +70,7 @@
       width: 50px;
       height: 50px;
       pointer-events: none;
-      transition: all 0.1s ease-in-out;
+      transition: none; /* Remove CSS transition, as we’ll handle movement in JS */
     }
   </style>
 </head>
@@ -113,22 +113,47 @@
       // Append the duck to the body
       document.body.appendChild(duck);
 
-      // Move the duck around with setInterval
+      // Start the duck animation
       moveDuck(duck);
     }
 
     function moveDuck(duck) {
-      let duckDirection = {
-        top: Math.random() * window.innerHeight + "px",
-        left: Math.random() * window.innerWidth + "px",
-      };
+      // Initial position
+      let xPos = parseInt(duck.style.left);
+      let yPos = parseInt(duck.style.top);
+      
+      // Set speed of movement
+      const speed = 3;
 
-      // Set an interval to move the duck every 2 seconds
-      setInterval(() => {
-        // Randomly update the position of the duck
-        duck.style.top = Math.random() * window.innerHeight + "px";
-        duck.style.left = Math.random() * window.innerWidth + "px";
-      }, 1000);  // Move every 1 second
+      // Direction of movement
+      let xSpeed = Math.random() > 0.5 ? speed : -speed;
+      let ySpeed = Math.random() > 0.5 ? speed : -speed;
+
+      function animateDuck() {
+        // Update position based on speed and direction
+        xPos += xSpeed;
+        yPos += ySpeed;
+
+        // If duck hits the right edge of the screen, reverse direction
+        if (xPos >= window.innerWidth - 50 || xPos <= 0) {
+          xSpeed = -xSpeed;
+        }
+
+        // If duck hits the bottom or top edge of the screen, reverse direction
+        if (yPos >= window.innerHeight - 50 || yPos <= 0) {
+          ySpeed = -ySpeed;
+        }
+
+        // Apply the new positions to the duck
+        duck.style.left = xPos + "px";
+        duck.style.top = yPos + "px";
+
+        // Repeat the animation using requestAnimationFrame
+        requestAnimationFrame(animateDuck);
+      }
+
+      // Start the animation loop
+      animateDuck();
     }
   </script>
 
