@@ -135,7 +135,17 @@
       width: 50px;
       height: 50px;
       pointer-events: none;
-      transition: none; /* Remove CSS transition, as we’ll handle movement in JS */
+      animation: fall 5s linear infinite; /* Apply smooth falling animation */
+    }
+
+    /* Duck falling animation */
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px); /* Start above the screen */
+      }
+      100% {
+        transform: translateY(calc(100vh + 50px)); /* Fall to the bottom of the screen */
+      }
     }
   </style>
 </head>
@@ -170,8 +180,8 @@
   <div class="gaming-duck-section">
     <h2>FACTS ALL ABOUT GAMING DUCK</h2>
 
-    <!-- Gaming Duck Image -->
-    <img class="gaming-duck-img" src="https://giganticduck.com/wp-content/uploads/2019/10/cropped-2-300x300.png" alt="Gaming Duck" />
+    <!-- Clickable Gaming Duck Image -->
+    <img class="gaming-duck-img" src="https://giganticduck.com/wp-content/uploads/2019/10/cropped-2-300x300.png" alt="Gaming Duck" onclick="startDuckRain()" />
 
     <div class="gaming-fun-facts">
       <h5 class="s6">Fun Facts About Gaming Duck:</h5>
@@ -185,61 +195,21 @@
   </div>
 
   <script>
-    // Function to spawn a duck when the image is clicked
-    function spawnDuck() {
-      // Create a new image element for the duck
-      var duck = document.createElement("img");
-      duck.src = "https://img.freepik.com/free-photo/funny-duck-3d-illustration_183364-80159.jpg?t=st=1733046857~exp=1733050457~hmac=2b53fde5eee43dcb8ad1e2bf82aaab95e755fdb7380ba53cfcee19468612d84b&w=200";
-      duck.classList.add("duck");
-
-      // Randomize the initial position
-      duck.style.top = Math.random() * window.innerHeight + "px";
-      duck.style.left = Math.random() * window.innerWidth + "px";
-
-      // Append the duck to the body
-      document.body.appendChild(duck);
-
-      // Start the duck animation
-      moveDuck(duck);
-    }
-
-    function moveDuck(duck) {
-      // Initial position
-      let xPos = parseInt(duck.style.left);
-      let yPos = parseInt(duck.style.top);
-      
-      // Set speed of movement
-      const speed = 3;
-
-      // Direction of movement
-      let xSpeed = Math.random() > 0.5 ? speed : -speed;
-      let ySpeed = Math.random() > 0.5 ? speed : -speed;
-
-      function animateDuck() {
-        // Update position based on speed and direction
-        xPos += xSpeed;
-        yPos += ySpeed;
-
-        // If duck hits the right edge of the screen, reverse direction
-        if (xPos >= window.innerWidth - 50 || xPos <= 0) {
-          xSpeed = -xSpeed;
-        }
-
-        // If duck hits the bottom or top edge of the screen, reverse direction
-        if (yPos >= window.innerHeight - 50 || yPos <= 0) {
-          ySpeed = -ySpeed;
-        }
-
-        // Apply the new positions to the duck
-        duck.style.left = xPos + "px";
-        duck.style.top = yPos + "px";
-
-        // Repeat the animation using requestAnimationFrame
-        requestAnimationFrame(animateDuck);
+    // Function to start the Duck Rain effect when Gaming Duck image is clicked
+    function startDuckRain() {
+      for (let i = 0; i < 10; i++) { // Create 10 ducks for the rain effect
+        setTimeout(() => {
+          var duck = document.createElement("img");
+          duck.src = "https://img.freepik.com/free-photo/funny-duck-3d-illustration_183364-80159.jpg?t=st=1733046857~exp=1733050457~hmac=2b53fde5eee43dcb8ad1e2bf82aaab95e755fdb7380ba53cfcee19468612d84b&w=200"; // Duck image
+          duck.classList.add("duck"); // Apply duck styles
+          
+          // Randomize the horizontal position of the falling duck
+          duck.style.left = Math.random() * window.innerWidth + "px";
+          
+          // Append the duck to the body
+          document.body.appendChild(duck);
+        }, i * 300); // Delay each duck by 300ms for a staggered effect
       }
-
-      // Start the animation loop
-      animateDuck();
     }
   </script>
 
