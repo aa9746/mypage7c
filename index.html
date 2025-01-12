@@ -64,41 +64,13 @@
       margin-top: 40px;
     }
 
-    /* Duck animation */
+    /* Duck Styling */
     .duck {
       position: absolute;
       width: 50px;
       height: 50px;
-      animation: bounce 3s infinite;
       pointer-events: none;
-    }
-
-    @keyframes bounce {
-      0% {
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%) translateY(0);
-      }
-      25% {
-        top: 20%;
-        left: 70%;
-        transform: translateX(-50%) translateY(-20px);
-      }
-      50% {
-        top: 40%;
-        left: 50%;
-        transform: translateX(-50%) translateY(0);
-      }
-      75% {
-        top: 60%;
-        left: 30%;
-        transform: translateX(-50%) translateY(-20px);
-      }
-      100% {
-        top: 80%;
-        left: 50%;
-        transform: translateX(-50%) translateY(0);
-      }
+      transition: all 0.1s ease-in-out;
     }
   </style>
 </head>
@@ -129,17 +101,34 @@
   <script>
     // Function to spawn a duck when the image is clicked
     function spawnDuck() {
-      // Create a new div for the duck
+      // Create a new image element for the duck
       var duck = document.createElement("img");
       duck.src = "https://img.freepik.com/free-photo/funny-duck-3d-illustration_183364-80159.jpg?t=st=1733046857~exp=1733050457~hmac=2b53fde5eee43dcb8ad1e2bf82aaab95e755fdb7380ba53cfcee19468612d84b&w=200";
       duck.classList.add("duck");
 
-      // Randomize the spawn location and animation start
-      document.body.appendChild(duck);
-      
-      // Set a random starting position
+      // Randomize the initial position
       duck.style.top = Math.random() * window.innerHeight + "px";
       duck.style.left = Math.random() * window.innerWidth + "px";
+
+      // Append the duck to the body
+      document.body.appendChild(duck);
+
+      // Move the duck around with setInterval
+      moveDuck(duck);
+    }
+
+    function moveDuck(duck) {
+      let duckDirection = {
+        top: Math.random() * window.innerHeight + "px",
+        left: Math.random() * window.innerWidth + "px",
+      };
+
+      // Set an interval to move the duck every 2 seconds
+      setInterval(() => {
+        // Randomly update the position of the duck
+        duck.style.top = Math.random() * window.innerHeight + "px";
+        duck.style.left = Math.random() * window.innerWidth + "px";
+      }, 1000);  // Move every 1 second
     }
   </script>
 
