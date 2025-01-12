@@ -6,7 +6,7 @@
     /* Body background gradient */
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+      background: linear-gradient(135deg, rgba(70, 130, 180, 0.8), rgba(255, 182, 193, 0.8));
       color: white;
       text-align: center;
       padding: 20px;
@@ -19,6 +19,7 @@
       color: orange;
       font-size: 3em;
       text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
     h2.s7 {
@@ -31,13 +32,14 @@
 
     /* Section for Chef Duck description */
     .chef-section {
-      background-image: linear-gradient(purple, greenyellow);
+      background: rgba(255, 255, 255, 0.1);
       padding: 20px;
       border-radius: 10px;
       margin-top: 30px;
       width: 60%;
       margin-left: auto;
       margin-right: auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
     /* Chef Duck Picture Styling */
@@ -46,6 +48,11 @@
       border-radius: 15px;
       margin-top: 20px;
       cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .chef-img:hover {
+      transform: scale(1.1);
     }
 
     /* Fun Facts about Chef Duck */
