@@ -33,10 +33,57 @@
       font-weight: normal;
       font-family: 'Arial', sans-serif;
       position: absolute;
-      top: 250px; /* Place it just below the Chef Duck title */
+      top: 220px; /* Place it below the Chef Duck title */
       left: 50%;
       transform: translateX(-50%); /* Center the text horizontally */
-      z-index: 2;
+      animation: shake 0.5s infinite, changeColor 2s infinite; /* Apply shaking and color change animations */
+      z-index: 2; /* Ensure it's on top of the image */
+    }
+
+    /* Shaking animation */
+    @keyframes shake {
+      0% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      25% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(10px);
+      }
+
+      75% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    /* Color changing animation */
+    @keyframes changeColor {
+      0% {
+        color: green;
+      }
+
+      25% {
+        color: yellow;
+      }
+
+      50% {
+        color: orange;
+      }
+
+      75% {
+        color: red;
+      }
+
+      100% {
+        color: green;
+      }
     }
 
     h2.s7 {
@@ -116,6 +163,30 @@
         transform: translateX(0) translateY(0);
       }
     }
+
+    /* Duck bouncing when touching the edge */
+    @keyframes bounceEdge {
+      0% {
+        transform: translateX(0) translateY(0);
+      }
+
+      25% {
+        transform: translateX(10px) translateY(10px);
+      }
+
+      50% {
+        transform: translateX(0px) translateY(10px);
+      }
+
+      75% {
+        transform: translateX(10px) translateY(-10px);
+      }
+
+      100% {
+        transform: translateX(0px) translateY(0px);
+      }
+    }
+
   </style>
 </head>
 
@@ -155,6 +226,9 @@
       // Randomize the horizontal position of the duck
       duck.style.left = Math.random() * window.innerWidth + "px";
       duck.style.top = Math.random() * window.innerHeight + "px"; // Randomize vertical position too
+
+      // Bounce smoothly around the screen using CSS animation
+      duck.style.animation = "bounce 2s infinite ease-in-out, bounceEdge 3s infinite ease-in-out";
 
       // Append the duck to the body
       document.body.appendChild(duck);
