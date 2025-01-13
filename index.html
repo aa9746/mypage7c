@@ -211,6 +211,19 @@
         }, i * 300); // Delay each duck by 300ms for a staggered effect
       }
     }
+
+    // Function to spawn a duck when Chef Duck image is clicked
+    function spawnDuck() {
+      var duck = document.createElement("img");
+      duck.src = "https://img.freepik.com/free-photo/funny-duck-3d-illustration_183364-80159.jpg?t=st=1733046857~exp=1733050457~hmac=2b53fde5eee43dcb8ad1e2bf82aaab95e755fdb7380ba53cfcee19468612d84b&w=200"; // Duck image
+      duck.classList.add("duck");
+      
+      // Randomize the horizontal position of the duck
+      duck.style.left = Math.random() * window.innerWidth + "px";
+
+      // Append the duck to the body
+      document.body.appendChild(duck);
+    }
   </script>
 
 </body>
