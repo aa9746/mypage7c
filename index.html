@@ -16,7 +16,7 @@
 
     /* Header styling for "Welcome to COOLIODUCKYS.COM" */
     h1.s1 {
-      color: purple; /* Changed to purple */
+      color: purple;
       font-size: 3em;
       text-transform: uppercase;
       margin-bottom: 10px;
@@ -30,10 +30,10 @@
       font-weight: normal;
       font-family: 'Arial', sans-serif;
       position: absolute;
-      top: 150px; /* Start with an initial position */
+      top: 150px;
       left: 50%;
-      transform: translateX(-50%); /* Center the text horizontally */
-      animation: shake 0.5s infinite, changeColor 2s infinite; /* Apply shaking and color change animations */
+      transform: translateX(-50%);
+      animation: shake 0.5s infinite, changeColor 2s infinite;
     }
 
     /* Shaking animation */
@@ -55,7 +55,7 @@
     }
 
     h2.s7 {
-      color: green; /* Changed to green */
+      color: green;
       font-size: 1.2em;
       line-height: 1.6;
       font-weight: lighter;
@@ -135,10 +135,29 @@
       width: 50px;
       height: 50px;
       pointer-events: none;
-      animation: fall 5s linear infinite; /* Apply smooth falling animation */
+      animation: smoothBounce 3s infinite; /* Smooth bounce animation for Chef Duck */
     }
 
-    /* Duck falling animation */
+    /* Smooth Bounce Animation */
+    @keyframes smoothBounce {
+      0% {
+        transform: translateX(0) translateY(0);
+      }
+      25% {
+        transform: translateX(30px) translateY(-20px);
+      }
+      50% {
+        transform: translateX(0) translateY(0);
+      }
+      75% {
+        transform: translateX(-30px) translateY(-20px);
+      }
+      100% {
+        transform: translateX(0) translateY(0);
+      }
+    }
+
+    /* Gaming Duck Falling Animation */
     @keyframes fall {
       0% {
         transform: translateY(-100px); /* Start above the screen */
@@ -161,7 +180,7 @@
     <h2>The Culinary Genius - Chef Duck</h2>
 
     <!-- Clickable Chef Duck Image -->
-    <img class="chef-img" src="https://img.freepik.com/free-photo/funny-duck-3d-illustration_183364-80159.jpg?t=st=1733046857~exp=1733050457~hmac=2b53fde5eee43dcb8ad1e2bf82aaab95e755fdb7380ba53cfcee19468612d84b&w=200" alt="Chef Duck" onclick="spawnDuck()" />
+    <img class="chef-img" src="https://img.freepik.com/free-photo/funny-duck-3d-illustration_183364-80159.jpg?t=st=1733046857~exp=1733050457~hmac=2b53fde5eee43dcb8ad1e2bf82aaab95e755fdb7380ba53cfcee19468612d84b&w=200" alt="Chef Duck" onclick="spawnChefDuck()" />
 
     <div class="fun-facts">
       <h5 class="s6">Fun Facts About Chef Duck:</h5>
@@ -206,20 +225,26 @@
           // Randomize the horizontal position of the falling duck
           duck.style.left = Math.random() * window.innerWidth + "px";
           
+          // Apply falling animation for gaming ducks
+          duck.style.animation = "fall 5s linear infinite";
+          
           // Append the duck to the body
           document.body.appendChild(duck);
         }, i * 300); // Delay each duck by 300ms for a staggered effect
       }
     }
 
-    // Function to spawn a duck when Chef Duck image is clicked
-    function spawnDuck() {
+    // Function to spawn Chef Duck and make them bounce
+    function spawnChefDuck() {
       var duck = document.createElement("img");
       duck.src = "https://img.freepik.com/free-photo/funny-duck-3d-illustration_183364-80159.jpg?t=st=1733046857~exp=1733050457~hmac=2b53fde5eee43dcb8ad1e2bf82aaab95e755fdb7380ba53cfcee19468612d84b&w=200"; // Duck image
       duck.classList.add("duck");
-      
+
       // Randomize the horizontal position of the duck
       duck.style.left = Math.random() * window.innerWidth + "px";
+
+      // Apply the bounce animation for Chef Duck
+      duck.style.animation = "smoothBounce 3s infinite";
 
       // Append the duck to the body
       document.body.appendChild(duck);
