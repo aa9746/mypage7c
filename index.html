@@ -25,7 +25,7 @@
       margin-bottom: 10px;
     }
 
-    /* Frenzied Instruction text styling */
+    /* Instruction text styling */
     .instruction-text {
       color: green; /* Initial green text color */
       font-size: 1.5em;
@@ -33,9 +33,9 @@
       font-weight: normal;
       font-family: 'Arial', sans-serif;
       position: absolute;
-      top: 220px; /* Place it below the Chef Duck title */
-      left: 50%;
-      transform: translateX(-50%); /* Center the text horizontally */
+      top: 230px;
+      left: 10px; /* Move the instruction text to the left of the image */
+      transform: translateX(0); /* Ensure it stays in place */
       animation: shake 0.5s infinite, changeColor 2s infinite; /* Apply shaking and color change animations */
       z-index: 2; /* Ensure it's on top of the image */
     }
@@ -43,23 +43,23 @@
     /* Shaking animation */
     @keyframes shake {
       0% {
-        transform: translateX(-50%) translateY(0);
+        transform: translateX(0) translateY(0);
       }
 
       25% {
-        transform: translateX(-50%) translateY(-10px);
+        transform: translateX(-10px) translateY(0);
       }
 
       50% {
-        transform: translateX(-50%) translateY(10px);
+        transform: translateX(10px) translateY(0);
       }
 
       75% {
-        transform: translateX(-50%) translateY(-10px);
+        transform: translateX(-10px) translateY(0);
       }
 
       100% {
-        transform: translateX(-50%) translateY(0);
+        transform: translateX(0) translateY(0);
       }
     }
 
@@ -137,54 +137,7 @@
       width: 50px;
       height: 50px;
       pointer-events: none;
-      animation: bounce 2s infinite ease-in-out;
       z-index: 10;
-    }
-
-    /* Smooth Bouncing Animation */
-    @keyframes bounce {
-      0% {
-        transform: translateX(0) translateY(0);
-      }
-
-      25% {
-        transform: translateX(100px) translateY(-100px);
-      }
-
-      50% {
-        transform: translateX(200px) translateY(0);
-      }
-
-      75% {
-        transform: translateX(100px) translateY(100px);
-      }
-
-      100% {
-        transform: translateX(0) translateY(0);
-      }
-    }
-
-    /* Duck bouncing when touching the edge */
-    @keyframes bounceEdge {
-      0% {
-        transform: translateX(0) translateY(0);
-      }
-
-      25% {
-        transform: translateX(10px) translateY(10px);
-      }
-
-      50% {
-        transform: translateX(0px) translateY(10px);
-      }
-
-      75% {
-        transform: translateX(10px) translateY(-10px);
-      }
-
-      100% {
-        transform: translateX(0px) translateY(0px);
-      }
     }
 
   </style>
@@ -197,7 +150,7 @@
   <div class="chef-section">
     <h2>The Culinary Genius - Chef Duck</h2>
 
-    <!-- Instruction Text above Chef Duck Image -->
+    <!-- Instruction Text next to Chef Duck Image -->
     <p class="instruction-text">Click on the image below to summon a duck that will bounce around your screen!</p>
 
     <!-- Clickable Chef Duck Image -->
@@ -223,12 +176,40 @@
       duck.src = "https://img.freepik.com/free-photo/funny-duck-3d-illustration_183364-80159.jpg?t=st=1733046857~exp=1733050457~hmac=2b53fde5eee43dcb8ad1e2bf82aaab95e755fdb7380ba53cfcee19468612d84b&w=200"; // Duck image
       duck.classList.add("duck");
 
-      // Randomize the horizontal position of the duck
-      duck.style.left = Math.random() * window.innerWidth + "px";
-      duck.style.top = Math.random() * window.innerHeight + "px"; // Randomize vertical position too
+      // Randomize the initial position of the duck
+      var x = Math.random() * (window.innerWidth - 50); // Subtract 50 to prevent overflow
+      var y = Math.random() * (window.innerHeight - 50); // Subtract 50 to prevent overflow
+      duck.style.left = x + "px";
+      duck.style.top = y + "px";
 
-      // Bounce smoothly around the screen using CSS animation
-      duck.style.animation = "bounce 2s infinite ease-in-out, bounceEdge 3s infinite ease-in-out";
+      // Set initial movement direction
+      var dx = (Math.random() > 0.5 ? 1 : -1) * Math.random() * 2; // Random horizontal speed
+      var dy = (Math.random() > 0.5 ? 1 : -1) * Math.random() * 2; // Random vertical speed
+
+      // Function to animate the duck
+      function moveDuck() {
+        x += dx;
+        y += dy;
+
+        // Bounce off the edges (DVD Logo effect)
+        if (x <= 0 || x >= window.innerWidth - 50) {
+          dx = -dx; // Reverse horizontal direction
+        }
+
+        if (y <= 0 || y >= window.innerHeight - 50) {
+          dy = -dy; // Reverse vertical direction
+        }
+
+        // Update the duck's position
+        duck.style.left = x + "px";
+        duck.style.top = y + "px";
+
+        // Continue moving the duck
+        requestAnimationFrame(moveDuck);
+      }
+
+      // Start the animation
+      moveDuck();
 
       // Append the duck to the body
       document.body.appendChild(duck);
