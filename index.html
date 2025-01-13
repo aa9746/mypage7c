@@ -27,12 +27,31 @@
 
     /* Instruction text styling */
     .instruction-text {
-      color: green; /* Green text color */
+      color: green; /* Initial color */
       font-size: 1.5em;
       font-weight: normal;
       font-family: 'Arial', sans-serif;
       margin-top: 20px; /* Space between header and instruction text */
       text-align: center; /* Centered */
+      animation: shake 1s ease-in-out infinite, changeColor 3s linear infinite;
+    }
+
+    /* Light shake animation */
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(5px); }
+      50% { transform: translateX(0); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Color changing animation */
+    @keyframes changeColor {
+      0% { color: green; }
+      25% { color: yellow; }
+      50% { color: orange; }
+      75% { color: red; }
+      100% { color: green; }
     }
 
     h2.s7 {
