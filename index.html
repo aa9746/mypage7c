@@ -1,6 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to COOLIODUCKYS.COM</title>
   <style>
     /* Body background gradient with shades of yellow */
@@ -38,20 +41,48 @@
 
     /* Shaking animation */
     @keyframes shake {
-      0% { transform: translateX(-50%) translateY(0); }
-      25% { transform: translateX(-50%) translateY(-10px); }
-      50% { transform: translateX(-50%) translateY(10px); }
-      75% { transform: translateX(-50%) translateY(-10px); }
-      100% { transform: translateX(-50%) translateY(0); }
+      0% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      25% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(10px);
+      }
+
+      75% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
     }
 
     /* Color changing animation */
     @keyframes changeColor {
-      0% { color: green; }
-      25% { color: yellow; }
-      50% { color: orange; }
-      75% { color: red; }
-      100% { color: green; }
+      0% {
+        color: green;
+      }
+
+      25% {
+        color: yellow;
+      }
+
+      50% {
+        color: orange;
+      }
+
+      75% {
+        color: red;
+      }
+
+      100% {
+        color: green;
+      }
     }
 
     h2.s7 {
@@ -96,39 +127,6 @@
       font-size: 1.1em;
     }
 
-    /* Gaming Duck Section */
-    .gaming-duck-section {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 50px;
-      width: 60%;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Gaming Duck Image Styling */
-    .gaming-duck-img {
-      width: 250px;
-      border-radius: 15px;
-      margin-top: 20px;
-      cursor: pointer;
-    }
-
-    .gaming-duck-img:hover {
-      transform: scale(1.1);
-    }
-
-    /* Fun Facts about Gaming Duck */
-    .gaming-fun-facts {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 15px;
-      margin-top: 20px;
-      border-radius: 10px;
-      font-size: 1.1em;
-    }
-
     /* Duck Styling */
     .duck {
       position: absolute;
@@ -143,6 +141,7 @@
       0% {
         transform: translateY(-100px); /* Start above the screen */
       }
+
       100% {
         transform: translateY(calc(100vh + 50px)); /* Fall to the bottom of the screen */
       }
@@ -176,42 +175,7 @@
 
   <h2 class="s7">Chef Duck's motto: "Cook with love, dance with flair!"</h2>
 
-  <!-- New Section for Gaming Duck -->
-  <div class="gaming-duck-section">
-    <h2>FACTS ALL ABOUT GAMING DUCK</h2>
-
-    <!-- Clickable Gaming Duck Image -->
-    <img class="gaming-duck-img" src="https://giganticduck.com/wp-content/uploads/2019/10/cropped-2-300x300.png" alt="Gaming Duck" onclick="startDuckRain()" />
-
-    <div class="gaming-fun-facts">
-      <h5 class="s6">Fun Facts About Gaming Duck:</h5>
-      <ul>
-        <li>Gaming Duck is the undisputed champion of "Duck Royale," a popular online battle royale game!</li>
-        <li>He can beat 100 players in a single round using only his webbed feet to control the mouse and keyboard.</li>
-        <li>In his downtime, Gaming Duck loves to stream his gaming sessions, earning millions of followers!</li>
-        <li>Gaming Duck once completed an entire game of "Quack of Duty" with his eyes closed, claiming it was for "extra challenge!"</li>
-      </ul>
-    </div>
-  </div>
-
   <script>
-    // Function to start the Duck Rain effect when Gaming Duck image is clicked
-    function startDuckRain() {
-      for (let i = 0; i < 10; i++) { // Create 10 ducks for the rain effect
-        setTimeout(() => {
-          var duck = document.createElement("img");
-          duck.src = "https://img.freepik.com/free-photo/funny-duck-3d-illustration_183364-80159.jpg?t=st=1733046857~exp=1733050457~hmac=2b53fde5eee43dcb8ad1e2bf82aaab95e755fdb7380ba53cfcee19468612d84b&w=200"; // Duck image
-          duck.classList.add("duck"); // Apply duck styles
-          
-          // Randomize the horizontal position of the falling duck
-          duck.style.left = Math.random() * window.innerWidth + "px";
-          
-          // Append the duck to the body
-          document.body.appendChild(duck);
-        }, i * 300); // Delay each duck by 300ms for a staggered effect
-      }
-    }
-
     // Function to spawn a duck when Chef Duck image is clicked
     function spawnDuck() {
       var duck = document.createElement("img");
@@ -229,4 +193,3 @@
 </body>
 
 </html>
-
