@@ -33,9 +33,9 @@
       font-weight: normal;
       font-family: 'Arial', sans-serif;
       position: absolute;
-      top: 230px;
-      left: 10px; /* Move the instruction text to the left of the image */
-      transform: translateX(0); /* Ensure it stays in place */
+      top: 140px; /* Position the text below the header */
+      left: 50%;
+      transform: translateX(-50%); /* Center the text horizontally */
       animation: shake 0.5s infinite, changeColor 2s infinite; /* Apply shaking and color change animations */
       z-index: 2; /* Ensure it's on top of the image */
     }
@@ -147,11 +147,11 @@
 
   <h1 class="s1">Welcome to COOLIODUCKYS.COM</h1>
 
+  <!-- Instruction Text below the header -->
+  <p class="instruction-text">Click on the image below to summon a duck that will bounce around your screen!</p>
+
   <div class="chef-section">
     <h2>The Culinary Genius - Chef Duck</h2>
-
-    <!-- Instruction Text next to Chef Duck Image -->
-    <p class="instruction-text">Click on the image below to summon a duck that will bounce around your screen!</p>
 
     <!-- Clickable Chef Duck Image -->
     <img class="chef-img" src="https://img.freepik.com/free-photo/funny-duck-3d-illustration_183364-80159.jpg?t=st=1733046857~exp=1733050457~hmac=2b53fde5eee43dcb8ad1e2bf82aaab95e755fdb7380ba53cfcee19468612d84b&w=200" alt="Chef Duck" onclick="spawnDuck()" />
