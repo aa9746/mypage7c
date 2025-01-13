@@ -27,63 +27,12 @@
 
     /* Instruction text styling */
     .instruction-text {
-      color: green; /* Initial green text color */
+      color: green; /* Green text color */
       font-size: 1.5em;
-      margin-top: 10px;
       font-weight: normal;
       font-family: 'Arial', sans-serif;
-      position: absolute;
-      top: 140px; /* Position the text below the header */
-      left: 50%;
-      transform: translateX(-50%); /* Center the text horizontally */
-      animation: shake 0.5s infinite, changeColor 2s infinite; /* Apply shaking and color change animations */
-      z-index: 2; /* Ensure it's on top of the image */
-    }
-
-    /* Shaking animation */
-    @keyframes shake {
-      0% {
-        transform: translateX(0) translateY(0);
-      }
-
-      25% {
-        transform: translateX(-10px) translateY(0);
-      }
-
-      50% {
-        transform: translateX(10px) translateY(0);
-      }
-
-      75% {
-        transform: translateX(-10px) translateY(0);
-      }
-
-      100% {
-        transform: translateX(0) translateY(0);
-      }
-    }
-
-    /* Color changing animation */
-    @keyframes changeColor {
-      0% {
-        color: green;
-      }
-
-      25% {
-        color: yellow;
-      }
-
-      50% {
-        color: orange;
-      }
-
-      75% {
-        color: red;
-      }
-
-      100% {
-        color: green;
-      }
+      margin-top: 20px; /* Space between header and instruction text */
+      text-align: center; /* Centered */
     }
 
     h2.s7 {
@@ -147,7 +96,7 @@
 
   <h1 class="s1">Welcome to COOLIODUCKYS.COM</h1>
 
-  <!-- Instruction Text below the header -->
+  <!-- Instruction Text under the header -->
   <p class="instruction-text">Click on the image below to summon a duck that will bounce around your screen!</p>
 
   <div class="chef-section">
