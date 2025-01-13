@@ -29,60 +29,14 @@
     .instruction-text {
       color: green; /* Initial green text color */
       font-size: 1.5em;
-      margin-top: 20px;
+      margin-top: 10px;
       font-weight: normal;
       font-family: 'Arial', sans-serif;
       position: absolute;
-      top: 150px; /* Start with an initial position */
+      top: 250px; /* Place it just below the Chef Duck title */
       left: 50%;
       transform: translateX(-50%); /* Center the text horizontally */
-      animation: shake 0.5s infinite, changeColor 2s infinite; /* Apply shaking and color change animations */
-    }
-
-    /* Shaking animation */
-    @keyframes shake {
-      0% {
-        transform: translateX(-50%) translateY(0);
-      }
-
-      25% {
-        transform: translateX(-50%) translateY(-10px);
-      }
-
-      50% {
-        transform: translateX(-50%) translateY(10px);
-      }
-
-      75% {
-        transform: translateX(-50%) translateY(-10px);
-      }
-
-      100% {
-        transform: translateX(-50%) translateY(0);
-      }
-    }
-
-    /* Color changing animation */
-    @keyframes changeColor {
-      0% {
-        color: green;
-      }
-
-      25% {
-        color: yellow;
-      }
-
-      50% {
-        color: orange;
-      }
-
-      75% {
-        color: red;
-      }
-
-      100% {
-        color: green;
-      }
+      z-index: 2;
     }
 
     h2.s7 {
@@ -103,6 +57,7 @@
       margin-left: auto;
       margin-right: auto;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
     }
 
     /* Chef Duck Picture Styling */
@@ -112,6 +67,8 @@
       margin-top: 20px;
       cursor: pointer;
       transition: transform 0.3s ease-in-out;
+      position: relative;
+      z-index: 1; /* Ensure it's under the instruction text */
     }
 
     .chef-img:hover {
@@ -133,17 +90,30 @@
       width: 50px;
       height: 50px;
       pointer-events: none;
-      animation: fall 5s linear infinite; /* Apply smooth falling animation */
+      animation: bounce 2s infinite ease-in-out;
+      z-index: 10;
     }
 
-    /* Duck falling animation */
-    @keyframes fall {
+    /* Smooth Bouncing Animation */
+    @keyframes bounce {
       0% {
-        transform: translateY(-100px); /* Start above the screen */
+        transform: translateX(0) translateY(0);
+      }
+
+      25% {
+        transform: translateX(100px) translateY(-100px);
+      }
+
+      50% {
+        transform: translateX(200px) translateY(0);
+      }
+
+      75% {
+        transform: translateX(100px) translateY(100px);
       }
 
       100% {
-        transform: translateY(calc(100vh + 50px)); /* Fall to the bottom of the screen */
+        transform: translateX(0) translateY(0);
       }
     }
   </style>
@@ -153,11 +123,11 @@
 
   <h1 class="s1">Welcome to COOLIODUCKYS.COM</h1>
 
-  <!-- Frenzied Instruction Text -->
-  <p class="instruction-text">Click on the image below to summon a duck that will bounce around the screen!</p>
-
   <div class="chef-section">
     <h2>The Culinary Genius - Chef Duck</h2>
+
+    <!-- Instruction Text above Chef Duck Image -->
+    <p class="instruction-text">Click on the image below to summon a duck that will bounce around your screen!</p>
 
     <!-- Clickable Chef Duck Image -->
     <img class="chef-img" src="https://img.freepik.com/free-photo/funny-duck-3d-illustration_183364-80159.jpg?t=st=1733046857~exp=1733050457~hmac=2b53fde5eee43dcb8ad1e2bf82aaab95e755fdb7380ba53cfcee19468612d84b&w=200" alt="Chef Duck" onclick="spawnDuck()" />
@@ -181,9 +151,10 @@
       var duck = document.createElement("img");
       duck.src = "https://img.freepik.com/free-photo/funny-duck-3d-illustration_183364-80159.jpg?t=st=1733046857~exp=1733050457~hmac=2b53fde5eee43dcb8ad1e2bf82aaab95e755fdb7380ba53cfcee19468612d84b&w=200"; // Duck image
       duck.classList.add("duck");
-      
+
       // Randomize the horizontal position of the duck
       duck.style.left = Math.random() * window.innerWidth + "px";
+      duck.style.top = Math.random() * window.innerHeight + "px"; // Randomize vertical position too
 
       // Append the duck to the body
       document.body.appendChild(duck);
